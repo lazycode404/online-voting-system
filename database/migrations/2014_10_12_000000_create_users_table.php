@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->id();
+            $table->string('code');
+            $table->string('voter_fname');
+            $table->string('voter_lname');
+            $table->string('voter_mname')->nullable();
+            $table->string('voter_address');
+            $table->string('voter_cellnum');
+            $table->string('voter_status');
+            $table->date('voter_datevoted')->nullable();
+            $table->tinyInteger('voter_electid');
+            $table->string('password');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('users');
+    }
+};
